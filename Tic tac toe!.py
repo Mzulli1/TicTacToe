@@ -22,7 +22,7 @@ def printBoard(board):
 def gameValid():
     matr = [[7,8,9], [4,5,6], [1,2,3], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
     for i in range(8):
-        if numpadBoard[matr[i][0]]==numpadBoard[matr[i][1]]==numpadBoard[matr[i][2]]:
+        if ' '!=numpadBoard[matr[i][0]]==numpadBoard[matr[i][1]]==numpadBoard[matr[i][2]]:
             return numpadBoard[matr[i][0]]
     for i in range(1, 10):
         if numpadBoard[i] == ' ':
@@ -41,7 +41,7 @@ print('specify move with top, mid, or low and L M or R separated by a "-"')
 print('heres an example: top-M (remember responces are case sensitive)')
 printBoard(numpadBoard)
 
-while gameValid():
+while gameValid() == True:
     print('Turn for '+turn+'. Move on which space?')
     move=int(input())
     try:
