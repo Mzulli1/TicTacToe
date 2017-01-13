@@ -13,8 +13,8 @@ numpadBoard = {7: ' ', 8: ' ', 9: ' ',
 
 # prints the board out in its current state
 def printBoard(board):
-    print(board[7], board[8], board[9], sep='|', end = '-+-+-')
-    print(board[4], board[5], board[6], sep='|', end = '-+-+-')
+    print(board[7], board[8], board[9], sep='|', end = '\n-+-+-\n')
+    print(board[4], board[5], board[6], sep='|', end = '\n-+-+-\n')
     print(board[1], board[2], board[3], sep='|')
 
 
