@@ -1,16 +1,12 @@
 import random
 
-theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
-            'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
-            'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
-
 ##              test stalemate board
 ##theBoard = {'top-L': 'X', 'top-M': 'O', 'top-R': 'O',
 ##            'mid-L': 'O', 'mid-M': 'O', 'mid-R': 'X',
 ##            'low-L': 'X', 'low-M': 'X', 'low-R': 'O'}
 
 
-## numpad board will be supported eventually     
+# numpad board now supported
 numpadBoard = {7: ' ', 8: ' ', 9: ' ',
                4: ' ', 5: ' ', 6: ' ',
                1: ' ', 2: ' ', 3: ' '}
