@@ -4,6 +4,18 @@ theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
             'mid-L': ' ', 'mid-M': ' ', 'mid-R': ' ',
             'low-L': ' ', 'low-M': ' ', 'low-R': ' '}
 
+##              test stalemate board
+##theBoard = {'top-L': 'X', 'top-M': 'O', 'top-R': 'O',
+##            'mid-L': 'O', 'mid-M': 'O', 'mid-R': 'X',
+##            'low-L': 'X', 'low-M': 'X', 'low-R': 'O'}
+
+
+## numpad board will be supported eventually
+
+numpadBoard = {'7': ' ', '8': ' ', '9': ' ',
+            '4': ' ', '5': ' ', '6': ' ',
+            '1': ' ', '2': ' ', '3': ' '}
+
 
 def printBoard(board):
     print(board['top-L']+'|'+board['top-M']+'|'+board['top-R'])
@@ -30,8 +42,23 @@ def gameValid():
            or('O'==theBoard['top-R']==theBoard['mid-R']==theBoard['low-R'])
            or('O'==theBoard['top-L']==theBoard['mid-M']==theBoard['low-R'])
            or('O'==theBoard['top-R']==theBoard['mid-M']==theBoard['low-L'])):
-
+        
         return 'O'
+
+    elif ((' '!= theBoard['top-L'])
+          or(' '!=theBoard['top-M'])
+          or(' '!=theBoard['top-R'])
+          or(' '!=theBoard['mid-L'])
+          or(' '!=theBoard['mid-M'])
+          or(' '!=theBoard['mid-R'])
+          or(' '!=theBoard['low-L'])
+          or(' '!=theBoard['low-M'])
+          or(' '!=theBoard['low-R'])):
+        
+        return 'no one'
+          
+
+        
     else:
         return True
 
@@ -47,7 +74,7 @@ print('specify move with top, mid, or low and L M or R separated by a "-"')
 print('heres an example: top-M (remember responces are case sensitive)')
 printBoard(theBoard)
 
-while gameValid()!= ('X' or 'O'):
+while gameValid() == True:
     print('Turn for '+turn+'. Move on which space?')
     move=input()
     try:
