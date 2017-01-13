@@ -37,8 +37,7 @@ else:
 
 print('Welcome to Tic Tac Toe!')
 print('The format is simple: Type the move you would like to make!')
-print('specify move with top, mid, or low and L M or R separated by a "-"')
-print('heres an example: top-M (remember responces are case sensitive)')
+print('specify move with the numberpad')
 printBoard(numpadBoard)
 
 while gameValid() == True:
