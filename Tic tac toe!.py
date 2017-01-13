@@ -10,57 +10,28 @@ theBoard = {'top-L': ' ', 'top-M': ' ', 'top-R': ' ',
 ##            'low-L': 'X', 'low-M': 'X', 'low-R': 'O'}
 
 
-## numpad board will be supported eventually
+## numpad board will be supported eventually     
+numpadBoard = {7: ' ', 8: ' ', 9: ' ',
+               4: ' ', 5: ' ', 6: ' ',
+               1: ' ', 2: ' ', 3: ' '}
 
-numpadBoard = {'7': ' ', '8': ' ', '9': ' ',
-            '4': ' ', '5': ' ', '6': ' ',
-            '1': ' ', '2': ' ', '3': ' '}
-
-
+# prints the board out in its current state
 def printBoard(board):
-    print(board['top-L']+'|'+board['top-M']+'|'+board['top-R'])
-    print('-+-+-')
-    print(board['mid-L']+'|'+board['mid-M']+'|'+board['mid-R'])
-    print('-+-+-')
-    print(board['low-L']+'|'+board['low-M']+'|'+board['low-R'])
+    print(board[7], board[8], board[9], sep='|', end = '-+-+-')
+    print(board[4], board[5], board[6], sep='|', end = '-+-+-')
+    print(board[1], board[2], board[3], sep='|')
 
+
+# returns the winner of the game, or 'no one' if the game is tied, or True if the game is not over
 def gameValid():
-    if (('X'==theBoard['top-L']==theBoard['top-M']==theBoard['top-R'])
-           or('X'==theBoard['mid-L']==theBoard['mid-M']==theBoard['mid-R'])
-           or('X'==theBoard['low-L']==theBoard['low-M']==theBoard['low-R'])
-           or('X'==theBoard['top-L']==theBoard['mid-L']==theBoard['low-L'])
-           or('X'==theBoard['top-M']==theBoard['mid-M']==theBoard['low-M'])
-           or('X'==theBoard['top-R']==theBoard['mid-R']==theBoard['low-R'])
-           or('X'==theBoard['top-L']==theBoard['mid-M']==theBoard['low-R'])
-           or('X'==theBoard['top-R']==theBoard['mid-M']==theBoard['low-L'])):
-        return 'X'
-    elif (('O'==theBoard['top-L']==theBoard['top-M']==theBoard['top-R'])
-           or('O'==theBoard['mid-L']==theBoard['mid-M']==theBoard['mid-R'])
-           or('O'==theBoard['low-L']==theBoard['low-M']==theBoard['low-R'])
-           or('O'==theBoard['top-L']==theBoard['mid-L']==theBoard['low-L'])
-           or('O'==theBoard['top-M']==theBoard['mid-M']==theBoard['low-M'])
-           or('O'==theBoard['top-R']==theBoard['mid-R']==theBoard['low-R'])
-           or('O'==theBoard['top-L']==theBoard['mid-M']==theBoard['low-R'])
-           or('O'==theBoard['top-R']==theBoard['mid-M']==theBoard['low-L'])):
-        
-        return 'O'
-
-    elif ((' '!= theBoard['top-L'])
-          or(' '!=theBoard['top-M'])
-          or(' '!=theBoard['top-R'])
-          or(' '!=theBoard['mid-L'])
-          or(' '!=theBoard['mid-M'])
-          or(' '!=theBoard['mid-R'])
-          or(' '!=theBoard['low-L'])
-          or(' '!=theBoard['low-M'])
-          or(' '!=theBoard['low-R'])):
-        
-        return 'no one'
-          
-
-        
-    else:
-        return True
+    matr = [[7,8,9], [4,5,6], [1,2,3], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
+    for i in range(8):
+        if numpadBoard[matr[i][0]]==numpadBoard[matr[i][1]]==numpadBoard[matr[i][2]]:
+            return numpadBoard[matr[i][0]]
+    for i in range(1, 10):
+        if numpadBoard[i] == ' ':
+            return True
+    return 'no one'
 
 coinFlip = random.randint(1,2)
 if coinFlip == 1:
@@ -72,26 +43,26 @@ print('Welcome to Tic Tac Toe!')
 print('The format is simple: Type the move you would like to make!')
 print('specify move with top, mid, or low and L M or R separated by a "-"')
 print('heres an example: top-M (remember responces are case sensitive)')
-printBoard(theBoard)
+printBoard(numpadBoard)
 
-while gameValid() == True:
+while gameValid():
     print('Turn for '+turn+'. Move on which space?')
-    move=input()
+    move=int(input())
     try:
-        if theBoard[move]== ' ':
-            theBoard[move] = turn
+        if numpadBoard[move]== ' ':
+            numpadBoard[move] = turn
             if turn == 'X':
                 turn = 'O'
             else:
                 turn = 'X'
-            printBoard(theBoard)
+            printBoard(numpadBoard)
         else:
             print('That spots taken, dumbass. Try again.')
 
     except KeyError:
         print('Invalid responce!')
         
-print(str(gameValid())+ ' wins! ')
+print(gameValid()+ ' wins! ')
     
         
 
